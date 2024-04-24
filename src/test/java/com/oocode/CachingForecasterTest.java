@@ -23,4 +23,13 @@ public class CachingForecasterTest {
         verify(delegate).forecastFor("Oxford", FRIDAY); // This is arguable
         assertThat(forecast, equalTo(expectedForecast));
     }
+
+    @Test
+    public void checksCacheForExistingForecast() {
+        var delegate = mock(Forecaster.class);
+        var underTest = new CachingForecaster(delegate);
+        var cachedForecast = CachingForecaster.CACHE.put("Oxford-Friday", new Forecaster.Forecast(1, 2, "Cold"));
+
+        assertThat(underTest.forecastFor("Oxford", FRIDAY), equalTo(cachedForecast));
+    }
 }

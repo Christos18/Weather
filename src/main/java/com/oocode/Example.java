@@ -6,7 +6,8 @@ import com.oocode.teamoptimization.MetOfficeWeatherForecasterClient;
 import java.io.IOException;
 import java.time.DayOfWeek;
 
-public class Example {
+public class
+Example {
     public static void main(String[] args) throws IOException {
         String day = "Wednesday";
         String place = "Oxford";
